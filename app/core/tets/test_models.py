@@ -30,7 +30,7 @@ class ModelTests(TestCase):
             user = get_user_model().objects.create_user(email, 'sample12')
             self.assertEqual(user.email, expected)
             self.assertFalse(user.is_superuser)
-            self.assertFalse(user.is_volunteer)
+            self.assertFalse(user.is_staff)
 
     def test_create_volunteer(self):
         """Test creating a superuser."""
@@ -42,7 +42,7 @@ class ModelTests(TestCase):
             password=password,
         )
         self.assertFalse(user.is_superuser)
-        self.assertTrue(user.is_volunteer)
+        self.assertTrue(user.is_staff)
         self.assertEqual(user.email, email)
         self.assertTrue(user.check_password(password))
 
@@ -57,6 +57,6 @@ class ModelTests(TestCase):
             password=password,
         )
         self.assertTrue(user.is_superuser)
-        self.assertTrue(user.is_volunteer)
+        self.assertTrue(user.is_staff)
         self.assertEqual(user.email, email)
         self.assertTrue(user.check_password(password))
