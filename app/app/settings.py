@@ -28,7 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
 
-
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    "allauth",
     "core",
     "diary",
     "user",
@@ -142,3 +147,4 @@ REST_FRAMEWORK = {
 # TEMPLATE_DIRS = (
 #     PROJECT_PATH + '/templates/',
 # )
+SITE_ID = 1
