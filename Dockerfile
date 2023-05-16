@@ -1,0 +1,3 @@
+FROM python:3.9
+ENV PYTHONBUFFERED 1
+WORKDIR ./app
