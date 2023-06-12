@@ -10,11 +10,10 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
-    command: > 
-      sh -c "python manage.py runserver 0.0.0.0:8000"
-#      sh -c "python manage.py wait_for_db &&
-#      python manage.py migrate &&
-#      python manage.py runserver 0.0.0.0:8000"
+    command: >
+      sh -c "python manage.py wait_for_db &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
       - DB_NAME=devdb
@@ -27,14 +26,13 @@ services:
     image: postgres:13-alpine
     restart: always
     volumes:
-      - .dev-db:var/lib/postgresql/data
+      - postgres-db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=diarydb
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - '5432:5432'
+      - "54320:5432"
 
 volumes:
-  db:
-    driver: local
+  postgres-db:

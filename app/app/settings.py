@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ozkjtg!f^dx7+lu@1tbljuyf*r!$!m1$t$fsmczi$0k8b31-nl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', ]
 
 
 # Application definition
@@ -79,8 +79,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'diarydb',
-        'POSTGRES_USER': 'postgres',
-        'POSTGRES_PASSWORD': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': 'db',
         'PORT': '5432',
     }
