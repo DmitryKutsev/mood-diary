@@ -14,6 +14,7 @@ services:
       sh -c "python manage.py wait_for_db &&
       python manage.py migrate &&
       python manage.py runserver 0.0.0.0:8000"
+
     environment:
       - DB_HOST=db
       - DB_NAME=devdb
@@ -21,6 +22,7 @@ services:
       - DB_PASS=changeme
     depends_on:
       - db
+      - es
 
   db:
     image: postgres:13-alpine
@@ -33,6 +35,15 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - "54320:5432"
+
+  es:
+    image: elasticsearch:8.7.0
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - ELASTICSEARCH_HOST='localhost:9200'
+    ports:
+      - "9200:9200"
 
 volumes:
   postgres-db:
