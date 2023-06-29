@@ -30,7 +30,6 @@ ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 # Application definition
 
@@ -42,10 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    "allauth",
     "core",
     "diary",
-    "user",
     "rest_framework",
     "drf_spectacular",
 ]

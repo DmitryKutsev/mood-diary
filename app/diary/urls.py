@@ -3,7 +3,7 @@ from django.urls import path
 
 app_name = "diary"
 
-urlpatterns = [
-    path("", views.DiariesListView.as_view()),
-    path("<int:pk>/", views.DiaryDetailsView.as_view()),
-]
+# urlpatterns = [
+#     path("", views.DiariesListView.as_view()),
+#     path("<int:pk>/", views.DiaryDetailsView.as_view()),
+# ]
