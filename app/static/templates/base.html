@@ -1,0 +1,32 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+    <html>
+        <head>
+          <meta charset="utf-8">
+          <title>{% block title %}Your brain is fucking sick{% endblock title %}</title>
+        </head>
+        <body>
+            <div class="sidebar">
+                <p>Sidebar:</p>
+                {% csrf_token %}
+                <ul class="nav">
+                   {% if user.is_authenticated %}
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'diary:diary_list' %}">Diaries</a></li>
+                   {% endif %}
+                    <br>
+                    {% if user.is_authenticated %}
+                        You are logged in as {{ user.email }}!
+                        {% else %}
+                        <p>You are not logged in</p>
+                        <a href="{% url 'login' %}">Log In</a>
+                    {% endif %}
+                </ul>
+            </div>
+          <div class="container">
+            {% block content %}
+
+            {% endblock content %}
+          </div>
+        </body>
+    </html>

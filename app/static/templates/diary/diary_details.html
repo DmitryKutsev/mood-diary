@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Diary {% endblock title %}
+
+{% block content %}
+  <h1>Your Diariy</h1>
+
+  <h1>{{ object.title }}</h1>
+  <p>{{ object.description }}</p>
+  <p>Author: {{ object.author.name }}</p>
+  <p>Created at: {{ object.created_at }}</p>
+  <p>Updated at: {{ object.updated_at }}</p>
+{% endblock %}
