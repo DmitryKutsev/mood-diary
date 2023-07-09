@@ -75,9 +75,10 @@ class Patient(models.Model):
 class Diary(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='diaries')
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    diary = models.ForeignKey(User, on_delete=models.CASCADE, related_name='diaries')
 
     class Meta:
         verbose_name_plural = "diaries"
@@ -117,6 +118,7 @@ class DiaryEntry(models.Model):
     emotion = models.ForeignKey(Mood, on_delete=models.CASCADE)
     mood = models.ForeignKey(Emotion, on_delete=models.CASCADE)
     diary = models.ForeignKey(Diary, on_delete=models.CASCADE, related_name='entries')
+    reaction = models.TextField()
 
     # emotion_lvl = models.ForeignKey(EmotionLvl, on_delete=models.CASCADE)
     # mood_lvl = models.ForeignKey(MoodLvl, on_delete=models.CASCADE)

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Diary home{% endblock title %}
+
+{% block content %}
+  <h1>Your Diaries</h1>
+  <ul>
+    {% if object_list%}
+        {% for diary in object_list%}
+          <br>
+          <h2><a href="{% url 'diary:diary-details' diary.pk %}">{{ diary.title }}</a></h2>
+          <li>Diary {{ diary.id }}</li>
+          <li>Title: {{ diary.title }}  </li>
+          <li>Description: {{ diary.description }}</li>
+          <li>Author: {{ diary.author }}</li>
+          <br>
+        {% endfor %}
+    {% else %}
+      <p>User {{user.name}} doesn't have any diaries.</p>
+    {% endif %}
+  </ul>
+{% endblock content %}

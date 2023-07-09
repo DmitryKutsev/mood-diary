@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "core",
     "diary",
+    "user",
     "rest_framework",
+    'rest_framework.authtoken',
     "drf_spectacular",
 ]
 
@@ -110,6 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL = 'home'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/

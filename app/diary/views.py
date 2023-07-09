@@ -1,28 +1,24 @@
-# from core.models import Diary
-# from core.models import DiaryEntry
-# from django.shortcuts import render
-# from django.views.generic.base import View
-#
-#
-# # Create your views here.
-#
-#
-# class DiariesListView(View):
-#     """Diaries view"""
-#
-#     def get(self, request):
-#         diaries = Diary.objects.all()  # .filter(patient=self.request.user)
-#         return render(request, "diary/diaries_list.html", {"diary_list": diaries})
-#
-#
-# class DiaryDetailsView(View):
-#     """Diary's detailed view"""
-#
-#     def get(self, request, pk):
-#         diary = Diary.objects.get(id=pk)
-#         entries_list = diary.entries.all()
-#         return render(
-#             request,
-#             "diary/diary_details.html",
-#             {"diary": diary, "entries": entries_list},
-#         )
+import urllib
+
+from django.shortcuts import get_object_or_404
+from django.views.generic import TemplateView, ListView, DetailView
+
+from core.models import Diary, User
+
+
+class HomePageView(TemplateView):
+    template_name = 'home.html'
+
+from django.views import generic
+
+class DiaryListView(ListView):
+    template_name = "diary/diaries.html"
+
+    def get_queryset(self):
+        try:
+            return Diary.objects.filter(author=self.request.user)
+        except User.DoesNotExist:
+            return
+class DiaryDetailView(DetailView):
+    model = Diary
+    template_name = 'diary/diary_details.html'
