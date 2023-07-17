@@ -1,14 +1,40 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.forms import ModelForm
+
+from core.models import Supervisor, Therapist, Patient
 
 
-class CustomUserCreationForm(UserCreationForm):
+class SignUpForm(UserCreationForm):
+
     class Meta:
         model = get_user_model()
-        fields = ('email', 'username',)
+        fields = [
+            'name',
+            'email',
+            ]
 
 
-class CustomUserChangeForm(UserChangeForm):
+class PatientForm(ModelForm):
     class Meta:
-        model = get_user_model()
-        fields = ('email', 'username',)
+        model = Patient
+        fields = ['bio']
+
+
+class TherapistForm(ModelForm):
+    class Meta:
+        model = Therapist
+        fields = ['bio']
+
+
+class SupervisorForm(ModelForm):
+    class Meta:
+        model = Supervisor
+        fields = ['cv', 'bio', 'diploma']
+
+
+# class UserCreationMultiForm(MultiModelForm):
+#     form_classes = {
+#         'user': UserCreationForm,
+#         'profile': UserProfileForm,
+#     }

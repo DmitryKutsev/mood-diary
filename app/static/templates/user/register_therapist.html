@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Registration page{% endblock title %}
+{% block body %}
+<h1>Welcome to the Therapist Registration! </h1>
+{% endblock body %}
+{% block content %}
+
+    <h2> Please, fill the form: </h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ therapist_form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+
+{% endblock content %}

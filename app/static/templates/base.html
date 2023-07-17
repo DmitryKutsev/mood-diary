@@ -17,9 +17,12 @@
                     <br>
                     {% if user.is_authenticated %}
                         You are logged in as {{ user.email }}!
-                        {% else %}
+                        <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+                    {% else %}
                         <p>You are not logged in</p>
                         <a href="{% url 'login' %}">Log In</a>
+                        <br>
+                        <a href="{% url 'user:register' %}">Sign up</a>
                     {% endif %}
                 </ul>
             </div>

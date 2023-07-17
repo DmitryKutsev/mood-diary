@@ -45,6 +45,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Therapist(models.Model):
     user_profile = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     cv = models.FileField(upload_to='uploads/cv/', null=True, blank=True)
+
+    bio = models.TextField()
     diploma = models.FileField(upload_to='uploads/diploma/', null=True, blank=True)
     patients = models.ManyToManyField('Patient', through='Therapy')
 
@@ -55,6 +57,8 @@ class Therapist(models.Model):
 class Supervisor(models.Model):
     user_profile = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     cv = models.FileField(upload_to='uploads/cv/', null=True, blank=True)
+
+    bio = models.TextField()
     diploma = models.FileField(upload_to='uploads/diploma/', null=True, blank=True)
     therapists = models.ManyToManyField('Therapist', through='Supervision')
 
@@ -64,6 +68,7 @@ class Supervisor(models.Model):
 
 class Patient(models.Model):
     user_profile = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    bio = models.TextField()
 
     class Meta:
         verbose_name_plural = "patients"
