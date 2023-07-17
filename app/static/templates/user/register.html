@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign up page{% endblock title %}
+
+{% block content %}
+    <h2>Choose your user:</h2>
+        <li><a href="{% url 'user:register_therapist' %}">Therapist</a></li>
+        <li><a href="{% url 'user:register_patient' %}">Patient</a></li>
+        <li><a href="{% url 'user:register_supervisor' %}">Supervisor</a></li>
+        <br>
+    <li><a href="{% url 'home' %}">Naah, home</a></li>
+{% endblock content %}
